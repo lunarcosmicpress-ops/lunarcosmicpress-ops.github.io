@@ -1,18 +1,15 @@
-<script>
-  const musicToggle = document.getElementById('musicToggle');
-  const bgMusic = document.getElementById('bgMusic');
-  let isPlaying = false;
+// 🎵 Music Player Control
+const music = document.getElementById("bgMusic");
+const toggle = document.getElementById("musicToggle");
+let playing = false;
 
-  musicToggle.addEventListener('click', () => {
-    if (!isPlaying) {
-      bgMusic.play();
-      musicToggle.classList.add('playing');
-      musicToggle.classList.remove('paused');
-    } else {
-      bgMusic.pause();
-      musicToggle.classList.remove('playing');
-      musicToggle.classList.add('paused');
-    }
-    isPlaying = !isPlaying;
-  });
-</script>
+toggle.addEventListener("click", () => {
+  if (!playing) {
+    music.play();
+    toggle.classList.add("playing");
+  } else {
+    music.pause();
+    toggle.classList.remove("playing");
+  }
+  playing = !playing;
+});
