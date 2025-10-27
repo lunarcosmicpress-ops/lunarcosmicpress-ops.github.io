@@ -1365,6 +1365,69 @@ body {
     height: 220px;
   }
 }
+/* 🌒 音乐按钮风格化设计 */
+.music-button {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), rgba(0, 0, 0, 0.5));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+.music-button:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  transform: scale(1.05);
+}
+
+/* 音符符号样式 */
+.note-symbol {
+  font-size: 1.3rem;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* 播放中状态 */
+.music-button.playing {
+  background: radial-gradient(circle at center, rgba(163, 230, 53, 0.25), rgba(0, 0, 0, 0.7));
+  box-shadow: 0 0 25px rgba(163, 230, 53, 0.6);
+}
+
+.music-button.playing .note-symbol {
+  color: #a3e635;
+  animation: pulseNote 1.6s infinite alternate;
+}
+
+/* 暂停状态带划痕 */
+.music-button.paused::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 26px;
+  background: rgba(185, 28, 28, 0.9);
+  transform: rotate(-25deg);
+  box-shadow: 0 0 6px rgba(185, 28, 28, 0.6);
+}
+
+@keyframes pulseNote {
+  from {
+    text-shadow: 0 0 6px rgba(163, 230, 53, 0.4);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(163, 230, 53, 0.8);
+  }
+}
+
 
 
 
