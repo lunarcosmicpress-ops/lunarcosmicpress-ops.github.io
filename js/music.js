@@ -5,23 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!music || !toggle) return;
 
-  // 尝试自动播放（会被浏览器阻止，需手动点击）
-  const tryPlay = () => {
-    music.play().catch(() => {
-      console.log("Autoplay blocked until user interaction");
-    });
-  };
+  // 确保音乐音量适中
+  music.volume = 0.4;
 
-  // 点击按钮播放 / 暂停
+  // 点击按钮后播放或暂停音乐
   toggle.addEventListener("click", () => {
     if (music.paused) {
-      music.play();
-      toggle.classList.add("playing");
+      music.play()
+        .then(() => toggle.classList.add("playing"))
+        .catch(err => console.log("Playback blocked:", err));
     } else {
       music.pause();
       toggle.classList.remove("playing");
     }
   });
-
-  tryPlay();
 });
